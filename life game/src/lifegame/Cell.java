@@ -1,5 +1,7 @@
 package lifegame;
 
+import lifegame.Cell.State;
+
 public class Cell {
 	public enum State {
 		Live, Death, Undetermined
@@ -27,6 +29,11 @@ public class Cell {
 		}
 		this.state = this.nextState;
 		this.nextState = State.Undetermined;
+	}
+
+	public void setState(State liveOrDeath) {
+		state = liveOrDeath;
+		
 	}
 	
 	
