@@ -4,31 +4,35 @@ import java.util.List;
 
 public class Checker {
 
-	public static void determineAndSetNextStateOf(Cell cell, List<Cell> aroundCells) {
+	public static Cell.State getNextState(JCell cell, JCell[] aroundCells) {
+
 		
 		int numberOfAlivedAroundCells = countAlivedCells(aroundCells);
 		
+		Cell.State nextState;
+		
 		if (numberOfAlivedAroundCells == 3) {
-			cell.setNextState(Cell.State.Live);
+			nextState = Cell.State.Live;
 		} else if (numberOfAlivedAroundCells == 2){
 			if (cell.isAlive()) {
-				cell.setNextState(Cell.State.Live);
+				nextState = Cell.State.Live;
 			} else {
-				cell.setNextState(Cell.State.Death);
+				nextState = Cell.State.Dead;
 			}
 		} else  {
-			cell.setNextState(Cell.State.Death);
+			nextState = Cell.State.Dead;
 		}
+		
+		return nextState;
 
 	}
 
-	private static int countAlivedCells(List<Cell> cells) {
+	private static int countAlivedCells(JCell[] cells) {
 		int numberOfAlivedCells = 0;
-		for (Cell cell : cells) {
+		for (JCell cell : cells) {
 			if (cell.isAlive()) {
 				numberOfAlivedCells++;
 			}
-
 		}
 
 		return numberOfAlivedCells;

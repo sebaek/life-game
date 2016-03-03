@@ -1,38 +1,26 @@
 package lifegame;
 
-import lifegame.Cell.State;
-
 public class Cell {
 	public enum State {
-		Live, Death, Undetermined
+		Live, Dead
 	}
 	
 	private State state;
-	private State nextState;
 	
-	public Cell(State liveOrDeath) {
-		this.state = liveOrDeath;
-		this.nextState = State.Undetermined;
+	public Cell() {
+		this(State.Dead);
 	}
 	
-	public void setNextState(State liveOrDeath) {
-		this.nextState = liveOrDeath;
+	public Cell(State liveOrDead) {
+		this.state = liveOrDead;
 	}
 	
 	public boolean isAlive() {
 		return state.equals(State.Live);
 	}
-	
-	public void goNextState() {
-		if (nextState == State.Undetermined) {
-			throw new RuntimeException("This cell has undetermined next state.");
-		}
-		this.state = this.nextState;
-		this.nextState = State.Undetermined;
-	}
 
-	public void setState(State liveOrDeath) {
-		state = liveOrDeath;
+	public void setState(State liveOrDead) {
+		state = liveOrDead;
 		
 	}
 	
