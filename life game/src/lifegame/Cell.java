@@ -1,25 +1,25 @@
 package lifegame;
 
 public class Cell {
-	public enum State {
+	public enum CellState {
 		Live, Dead
 	}
 	
-	private State state;
+	private CellState state;
 	
 	public Cell() {
-		this(State.Dead);
+		this(CellState.Dead);
 	}
 	
-	public Cell(State liveOrDead) {
+	public Cell(CellState liveOrDead) {
 		this.state = liveOrDead;
 	}
 	
 	public boolean isAlive() {
-		return state.equals(State.Live);
+		return state.equals(CellState.Live);
 	}
 
-	public void setState(State liveOrDead) {
+	public void setState(CellState liveOrDead) {
 		state = liveOrDead;
 		
 	}

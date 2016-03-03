@@ -1,24 +1,26 @@
 package lifegame;
 
+import static lifegame.Cell.CellState;
+
 public class Checker {
 
-	public static Cell.State getNextState(JCell cell, JCell[] aroundCells) {
+	public static CellState getNextState(JCell cell, JCell[] aroundCells) {
 
 		
 		int numberOfAlivedAroundCells = countAlivedCells(aroundCells);
 		
-		Cell.State nextState;
+		CellState nextState;
 		
 		if (numberOfAlivedAroundCells == 3) {
-			nextState = Cell.State.Live;
+			nextState = CellState.Live;
 		} else if (numberOfAlivedAroundCells == 2){
 			if (cell.isAlive()) {
-				nextState = Cell.State.Live;
+				nextState = CellState.Live;
 			} else {
-				nextState = Cell.State.Dead;
+				nextState = CellState.Dead;
 			}
 		} else  {
-			nextState = Cell.State.Dead;
+			nextState = CellState.Dead;
 		}
 		
 		return nextState;

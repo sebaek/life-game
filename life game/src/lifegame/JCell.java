@@ -6,6 +6,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
+import static lifegame.Cell.CellState;
+
 public class JCell extends JPanel {
 	private Cell cell;
 	private Color colorOfDead = Color.WHITE;
@@ -13,12 +15,12 @@ public class JCell extends JPanel {
 
 	public JCell() {
 		super();
-		cell = new Cell(Cell.State.Dead);
+		cell = new Cell(CellState.Dead);
 		rePaintBackground();
 		addMouseListener(new JCellMouseListener());
 	}
 
-	public void setState(Cell.State liveOrDead) {
+	public void setState(CellState liveOrDead) {
 		this.cell.setState(liveOrDead);
 		rePaintBackground();
 	}
@@ -40,9 +42,9 @@ public class JCell extends JPanel {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (isAlive()) {
-				setState(Cell.State.Dead);
+				setState(CellState.Dead);
 			} else {
-				setState(Cell.State.Live);
+				setState(CellState.Live);
 			}
 		}
 
