@@ -1,7 +1,5 @@
 package lifegame;
 
-import java.util.List;
-
 public class Checker {
 
 	public static Cell.State getNextState(JCell cell, JCell[] aroundCells) {
