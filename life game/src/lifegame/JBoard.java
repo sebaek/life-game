@@ -17,7 +17,7 @@ import javax.swing.KeyStroke;
 import static lifegame.Cell.CellState;
 
 public class JBoard extends JPanel {
-	private static final int gapOfCell = 2;
+	private static final int gapOfCell = 1;
 	private static final Color backgroundColor = Color.GRAY;
 	private final int rowCountOfCells;
 	private final int columnCountOfCells;
@@ -93,7 +93,7 @@ public class JBoard extends JPanel {
 
 		return aroundCells;
 	}
-	
+
 	private List<Coordinate> getAroundCoordinate(int x, int y) {
 		ArrayList<Coordinate> coordinates = new ArrayList<>();
 		for (int i = x - 1; i <= x + 1; i++) {
@@ -133,18 +133,19 @@ public class JBoard extends JPanel {
 	}
 
 	private void previous() {
-		if (popPreviousStates())
+		if (hasPreviousStates()) {
+			popPreviousStates();
 			changeCellsStates();
+		}
 	}
 
-	private boolean popPreviousStates() {
-		if (!statesStack.empty()) {
-			nextStates = statesStack.pop();
+	private boolean hasPreviousStates() {
+		return !statesStack.empty();
+	}
 
-			return true;
-		} else {
-			return false;
-		}
+	private void popPreviousStates() {
+		nextStates = statesStack.pop();
+
 	}
 
 	private class Coordinate {
@@ -161,14 +162,6 @@ public class JBoard extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			next();
-			for (CellState[] states : nextStates) {
-				for (CellState state : states) {
-					// System.out.print(state + " ");
-				}
-				// System.out.println();
-			}
-			// System.out.println("next key....");
-
 		}
 
 	}
@@ -178,7 +171,6 @@ public class JBoard extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			previous();
-			// System.out.println("previous key...");
 		}
 
 	}
