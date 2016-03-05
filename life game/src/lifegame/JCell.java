@@ -41,16 +41,16 @@ public class JCell extends JPanel {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
 			if (isAlive()) {
 				setState(CellState.Dead);
 			} else {
 				setState(CellState.Live);
 			}
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
 		}
 
 		@Override
@@ -60,12 +60,16 @@ public class JCell extends JPanel {
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			
+			if (!isAlive()) {
+				setBackground(Color.GRAY);
+			}
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			
+			if (!isAlive()) {
+				setBackground(colorOfDead);
+			}
 		}
 
 	}
