@@ -17,7 +17,7 @@ import javax.swing.KeyStroke;
 import static lifegame.Cell.CellState;
 
 public class JBoard extends JPanel {
-	private static final int gapOfCell = 1;
+	private static final int gapOfCell = 0;
 	private static final Color backgroundColor = Color.GRAY;
 	private final int rowCountOfCells;
 	private final int columnCountOfCells;

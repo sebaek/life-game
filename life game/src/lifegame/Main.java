@@ -5,7 +5,7 @@ import javax.swing.SwingUtilities;
 
 public class Main {
 
-	final static private int numberOfBoardRow = 60;
+	final static private int numberOfBoardRow = 30;
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> createAndShowGUI());

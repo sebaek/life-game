@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import static lifegame.Cell.CellState;
@@ -15,6 +16,7 @@ public class JCell extends JPanel {
 
 	public JCell() {
 		super();
+		setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		cell = new Cell(CellState.Dead);
 		rePaintBackground();
 		addMouseListener(new JCellMouseListener());
