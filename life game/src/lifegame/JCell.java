@@ -3,6 +3,7 @@ package lifegame;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -17,9 +18,19 @@ public class JCell extends JPanel {
 	public JCell() {
 		super();
 		setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-		cell = new Cell(CellState.Dead);
+//		cell = new Cell(CellState.Dead);
+		cell = new Cell(getRandomState());
 		rePaintBackground();
 		addMouseListener(new JCellMouseListener());
+	}
+	
+	private CellState getRandomState() {
+		Random random = new Random(System.currentTimeMillis());
+		if (random.nextInt(5) == 0) {
+			return CellState.Live;
+		}
+		
+		return CellState.Dead;
 	}
 
 	public void setState(CellState liveOrDead) {
